@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "radarwidget.h"
 #include <QMainWindow>
 #include <QSerialPort>
 
@@ -17,6 +18,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow() override;
+    RadarWidget *radar;
 
 private:
     Ui::MainWindow *ui;

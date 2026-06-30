@@ -9,6 +9,9 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    radar = new RadarWidget(this);
+    setCentralWidget(radar);
+
     serial = new QSerialPort(this);
     serial->setPortName("COM5"); // your actual port
     serial->setBaudRate(QSerialPort::Baud9600);
@@ -24,7 +27,7 @@ MainWindow::MainWindow(QWidget *parent)
             if (parts.size() == 2) {
                 int angle = parts[0].toInt();
                 int distance = parts[1].toInt();
-                qDebug() << "angle:" << angle << "distance:" << distance;
+                radar->updateReading(angle, distance);
             }
         }
     });
