@@ -8,11 +8,13 @@ public:
     int pointX;
     int pointY;
     Node* next;
+    Node* prev;
 
     Node(int X, int Y){
         pointX = X;
         pointY = Y;
         next = nullptr;
+        prev = nullptr;
     }
 };
 
@@ -41,6 +43,14 @@ private:
     int currentAngle = 0;
     int currentDistance = -1;
     Node* head = nullptr;
+    Node* last = nullptr;
+    int nodeCount = 0;
+    int previousAngle = 0;
+    int previousDistance = 0;
+    bool sweepingRight = true;
+    bool leadingPoint = false; //no detection to detection so leading point found
+    bool trailingPoint = false; //detection to no detection so trailing point found
+    bool samePoint = false; //previousDistance roughly equals currentDistance so same point was detected
 };
 
 #endif // RADARWIDGET_H
